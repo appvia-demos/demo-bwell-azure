@@ -1,0 +1,14 @@
+---
+apiVersion: app.appvia.io/v2beta1
+kind: AppComponent
+metadata:
+  name: bwell-storage-account
+spec:
+  application: bwell
+  cloudResource:
+    plan: azure-storage-account
+    variables:
+      name: bwellfvroxyw68k
+  key: storage
+  name: bwell-storage-account
+  type: CloudResource
