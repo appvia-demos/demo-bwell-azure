@@ -1,0 +1,9 @@
+---
+apiVersion: app.appvia.io/v2beta1
+kind: Application
+metadata:
+  name: bwell
+spec:
+  cloud: azure
+  name: bwell
+  description: Application with an Azure Storage Account
