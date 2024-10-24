@@ -1,0 +1,40 @@
+---
+apiVersion: app.appvia.io/v2beta1
+kind: AppComponent
+metadata:
+  name: bwell-storage-account-app
+spec:
+  application: bwell
+  type: Container
+  name: bwell-storage-account-app
+  dependsOn:
+    - bwell-storage-account
+  container:
+    containers:
+      - name: ui
+        env:
+          - fromCloudResourceOutput:
+              componentName: bwell-storage-account
+              output: PRIMARY_ACCESS_KEY
+            name: AZURE_STORAGE_KEY
+          - fromCloudResourceOutput:
+              componentName: bwell-storage-account
+              output: NAME
+            name: AZURE_STORAGE_ACCOUNT_NAME
+          - fromCloudResourceOutput:
+              componentName: bwell-storage-account
+              output: CONTAINER_NAME
+            name: AZURE_CONTAINER_NAME
+        image: >-
+          ghcr.io/appvia/azure-demo-storage-account-app:sha-ba2942dda4894ce377137d47996d392e1ae72b38
+        ports:
+          - containerPort: 3002
+            name: ui
+            protocol: TCP
+        securityContext:
+          runAsGroup: 1002
+          runAsUser: 1002
+    expose:
+      container: ui
+      port: 3002
+    tls: true

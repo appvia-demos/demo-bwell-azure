@@ -1,0 +1,30 @@
+---
+# yamllint disable rule:line-length
+apiVersion: compute.appvia.io/v2beta2
+kind: Cluster
+metadata:
+  name: azure-nonprod
+spec:
+  cloudAccessConfigRef:
+    name: azure-nonprod
+  description: Demo AKS Cluster for non-production workloads
+  nodePools:
+    - autoscaling:
+        enabled: true
+        maxSize: 10
+        minSize: 2
+      diskSize: 60
+      image: Linux
+      logicalName: system
+      machine: Standard_D2s_v5
+      maxPodsPerNode: 50
+      providerDetails:
+        aks:
+          mode: system
+      size: 2
+  planRef:
+    name: aks-general-purpose
+    version: 1.29.2
+  provider: AKS
+  region: uksouth
+  stage: nonprod

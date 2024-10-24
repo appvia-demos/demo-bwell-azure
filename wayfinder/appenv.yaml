@@ -1,0 +1,16 @@
+---
+apiVersion: app.appvia.io/v2beta1
+kind: AppEnv
+metadata:
+  name: bwell-nonprod
+spec:
+  name: nonprod
+  stage: nonprod
+  application: bwell
+  cloud: azure
+  clusterRef:
+    group: compute.appvia.io
+    kind: Cluster
+    name: azure-nonprod
+    namespace: ws-demo
+    version: v2beta1
