@@ -7,6 +7,7 @@ spec:
   application: bwell
   cloudResource:
     plan: azure-storage-account
+    planVersion: v1.0.1-1
     variables:
       name: bwellfvroxyw68k
   key: storage
