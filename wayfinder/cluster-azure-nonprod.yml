@@ -24,7 +24,7 @@ spec:
       size: 2
   planRef:
     name: aks-general-purpose
-    version: 1.30.0
+    version: 1.30.2
   provider: AKS
   region: uksouth
   stage: nonprod
